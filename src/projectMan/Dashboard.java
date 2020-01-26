@@ -8,10 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 
-public class Controller extends Application {
+public class Dashboard extends Application {
   @FXML
   Button btn_b1;
   @FXML
@@ -32,7 +31,7 @@ public class Controller extends Application {
   {
     Parent root=null;
     try {
-      root = FXMLLoader.load(getClass().getResource("NewProject.fxml"));
+      root = FXMLLoader.load(getClass().getResource("AddNewProject.fxml"));
     } catch (IOException e) {
       e.printStackTrace();
     }

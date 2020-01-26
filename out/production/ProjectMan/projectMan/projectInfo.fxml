@@ -2,4 +2,4 @@
 
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="213.0" prefWidth="271.0" style="-fx-background-color: #111;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectMan.S2" />
+<AnchorPane prefHeight="213.0" prefWidth="271.0" style="-fx-background-color: #111;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectMan.AddNewProject" />
