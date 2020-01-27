@@ -1,17 +1,18 @@
 package projectMan;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddTask {
-    int i = 1;
+    ArrayList<String>task;
+    int i = 0;
+    @FXML
+    Button btn_done;
     @FXML
     Button btn_addMoreTask;
     @FXML
@@ -21,14 +22,20 @@ public class AddTask {
     void setBtn_addMoreTask() {
 
         if(i!=5){
-            Parent root=null;
-            try {
-                root = FXMLLoader.load(getClass().getResource("Task.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            gridpane_tasks.add(root,0,i);
+
+            TextField t=new TextField();
+            t.setMaxSize(216,32);
+            gridpane_tasks.add(t,0,i);
+            gridpane_tasks.setPadding(new Insets(10, 10, 10, 10));
             i++;
+        }
+    }
+
+    @FXML
+    void setBtn_done(){
+        for(i=0;i<5;i++)
+        {
+            System.out.println(task.get(i));
         }
     }
 }

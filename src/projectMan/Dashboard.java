@@ -33,7 +33,7 @@ public class Dashboard extends Application {
     try {
       root = FXMLLoader.load(getClass().getResource("AddNewProject.fxml"));
     } catch (IOException e) {
-      e.printStackTrace();
+      System.out.println(e);
     }
     pane_p1.getChildren().setAll(root);
   }
