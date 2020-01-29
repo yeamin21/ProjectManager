@@ -5,5 +5,8 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <excluded>
+      <root url="jar://F:/Project/AirportDataManagement/dist/lib/mysql-connector-java-5.1.47-bin.jar!/" />
+    </excluded>
   </library>
 </component>
