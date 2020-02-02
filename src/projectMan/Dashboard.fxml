@@ -11,7 +11,4 @@
          </children>
       </Pane>
    </left>
-   <center>
-      <Pane fx:id="pane_p1" prefHeight="556.0" prefWidth="553.0" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>

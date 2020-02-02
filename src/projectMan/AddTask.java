@@ -1,23 +1,31 @@
 package projectMan;
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class AddTask {
+public class AddTask implements Initializable {
 
     ArrayList<TextField> TxT = new ArrayList<>();
     Connection con = ConnectDB.connect();
     PreparedStatement statement;
 
-    int i = 0;
+    int i = 1;
     @FXML
     Button btn_done;
+    @FXML
+    TextField txt_1;
     @FXML
     Button btn_addMoreTask;
     @FXML
@@ -49,5 +57,11 @@ public class AddTask {
             }
 
         }
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        TxT.add(txt_1);
     }
 }
