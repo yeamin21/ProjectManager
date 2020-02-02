@@ -14,20 +14,22 @@ import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AddNewProject extends Application {
+    static int key = 0;
     PreparedStatement ps;
     @FXML
-    TextField txt_projectName,txt_projectEnv;
-    Connection con=ConnectDB.connect();
-    String dbname=ConnectDB.dbname;
+    TextField txt_projectName, txt_projectEnv;
+    Connection con = ConnectDB.connect();
+    String dbname = ConnectDB.dbname;
     @FXML
     AnchorPane anc_pan_addnewproject;
+
     @FXML
-    void ToTaskPane()
-    {
-        Parent root=null;
+    void ToTaskPane() {
+        Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("AddTask.fxml"));
         } catch (IOException e) {
@@ -37,13 +39,18 @@ public class AddNewProject extends Application {
     }
 
     @FXML
-    void AddNewProject()
-    {
-      String query= "insert into "+dbname+".projects (id,project_name)values('"+txt_projectName.getText().trim()+"','"+txt_projectEnv.getText().trim()+"')";
-
+    void AddNewProject() {
+        String query = "insert into " + dbname + ".projects (project_name)values(?)";
         try {
-            ps =con.prepareStatement(query);
+            ps = con.prepareStatement(query, ps.RETURN_GENERATED_KEYS);
+            ps.setString(1, txt_projectName.getText());
             ps.execute();
+
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                this.key = rs.getInt(1);
+            }
+            ToTaskPane();
         } catch (SQLException e) {
             System.out.println(e);
         }

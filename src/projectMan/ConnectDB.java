@@ -10,15 +10,11 @@ public class ConnectDB {
    public static Connection connect()
     {
         try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-            String url="jdbc:mysql://localhost:3306/"+dbname+"?useSSL=false";
-            Connection con= DriverManager.getConnection(url,"root","root");
+            String url = "jdbc:mysql://localhost:3306/" + dbname + "?useSSL=false";
+            Connection con = DriverManager.getConnection(url, "root", "root");
             System.out.println("Connected");
-            return  con;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+            return con;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

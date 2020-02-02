@@ -1,11 +1,9 @@
 package projectMan;
-
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -32,21 +30,20 @@ public class AddTask {
             gridpane_tasks.add(t, 0, i);
             gridpane_tasks.setPadding(new Insets(10, 10, 10, 10));
             i++;
-
         }
         TxT.add(t);
     }
 
     @FXML
     void setBtn_done() {
-        int s = 0;
 
         for (TextField x : TxT) {
-            String sql = "insert into projectman.tasks (code,project_code,status) values(" + s + "," + s + ",'ssd')";
+            String sql = "insert into projectman.tasks (project_code,task_name) values(?,?)";
             try {
                 statement = con.prepareStatement(sql);
+                statement.setInt(1, AddNewProject.key);
+                statement.setString(2, x.getText());
                 statement.execute();
-                s++;
             } catch (SQLException e) {
                 System.out.println(e);
             }
