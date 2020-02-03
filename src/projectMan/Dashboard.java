@@ -17,25 +17,25 @@ public class Dashboard extends Application {
   GridPane gridpane_p1;
   @FXML
   AnchorPane anc_pan_addnewproject;
-  @FXML
-  BorderPane borderPane_p1;
-  @FXML
-  Pane pane_p1;
+    @FXML
+    AnchorPane borderPane_p1;
+    @FXML
+    Pane ppp1;
 
   @Override
   public void start(Stage primaryStage) throws Exception {
   }
 
   @FXML
-  void AddNewProjectPanel()
-  {
-    Parent root=null;
-    try {
-      root = FXMLLoader.load(getClass().getResource("AddNewProject.fxml"));
-    } catch (IOException e) {
-      System.out.println(e);
-    }
-    pane_p1.getChildren().setAll(root);
+  void AddNewProjectPanel() {
+      Parent root = null;
+      try {
+          root = FXMLLoader.load(getClass().getResource("AddNewProject.fxml"));
+      } catch (Exception e) {
+          System.out.println(e);
+      }
+      ppp1.getChildren().setAll(root);
+
   }
   @FXML
   void xx()

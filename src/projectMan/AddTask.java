@@ -2,10 +2,13 @@ package projectMan;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -35,8 +38,15 @@ public class AddTask implements Initializable {
     void setBtn_addMoreTask() {
         TextField t = new TextField();
         if (i != 5) {
+            gridpane_tasks.getChildren().remove(btn_addMoreTask);
+            t.setAlignment(Pos.CENTER);
+            t.setPrefWidth(175);
+            gridpane_tasks.add(btn_addMoreTask, 0, i);
+            gridpane_tasks.setHalignment(btn_addMoreTask, HPos.RIGHT);
             gridpane_tasks.add(t, 0, i);
-            gridpane_tasks.setPadding(new Insets(10, 10, 10, 10));
+            gridpane_tasks.setHalignment(t, HPos.CENTER);
+            gridpane_tasks.setVgap(10);
+            gridpane_tasks.add(new Text("Task: " + (i + 1)), 0, i);
             i++;
         }
         TxT.add(t);
