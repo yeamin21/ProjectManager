@@ -6,13 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,13 +23,16 @@ public class Dashboard extends Application implements Initializable {
     @FXML
     Button btn_b1;
     @FXML
-    GridPane gridpane_p1;
-    @FXML
     AnchorPane borderPane_p1;
     @FXML
     Pane ppp1;
+    @FXML
+    Label lbl_l1;
     int i = 1;
     ArrayList<Projects> p = new ArrayList<>();
+    ArrayList<Label> lbl = new ArrayList<>();
+    @FXML
+    GridPane gridpane_p1;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -64,21 +66,22 @@ public class Dashboard extends Application implements Initializable {
         ppp1.getChildren().setAll(root);
 
   }
-  @FXML
-  void xx() {
-      Parent root = null;
-      try {
-          root = FXMLLoader.load(getClass().getResource("projectInfo.fxml"));
-      } catch (IOException e) {
-          e.printStackTrace();
-      }
-      gridpane_p1.add(root, 0, 0);
-  }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         getProjects();
-        gridpane_p1.addRow(2);
-        gridpane_p1.add(new Text("XXP"), 0, 2);
+
+        for (Projects project : p) {
+
+            Label l1 = new Label();
+            l1.setText(project.getProject_name());
+            lbl.add(l1);
+
+        }
+        for (Label l1 : lbl) {
+            gridpane_p1.add(l1, 0, i);
+            i++;
+        }
     }
 }
